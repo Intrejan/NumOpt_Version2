@@ -1,0 +1,1 @@
+需要在config.py, makefile以及heribie_report.py的save_makefile函数中更改iRRAM_HOME

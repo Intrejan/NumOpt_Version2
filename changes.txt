@@ -1,0 +1,5 @@
+stable_analysis.py:
+	不明原因533行产生的real_res有时会为空，538行添加了对res是否为空的检查
+更改了iRAAM/include/iRRAM/REAL.h
+src/makefile中all之后添加了analysis_irram
+irram_report.py prepare函数中准备opt.cc的部分添加了从

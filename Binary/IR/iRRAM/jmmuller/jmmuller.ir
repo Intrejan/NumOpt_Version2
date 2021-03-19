@@ -1,0 +1,42 @@
+{
+"program_name": "jmmuller",
+"function_name" : "evaluate",
+"variables" : { "count": "integer", "a":"decimal", "b": "decimal", "c": "decimal"},
+"input_variables": ["count"],
+"return": "a",
+"paths": [
+            {
+                "constrain": "count<=1000",
+                "path":[
+                            {
+                                "type": "procedure",
+                                "content": [["a", "11.0/2.0"], ["b", "61.0/11.0"]]
+                            },
+                            {
+                                "type": "loop",
+                                "content": {
+                                    "variables":{"i": "integer"},
+                                    "initialize":{"i": "0"},
+                                    "loop_body":[
+                                        {"constrain": "i<count", "path": [{"type": "procedure", "content": [["c", "111-(1130-3000/a)/b"], ["a", "b"], ["b", "c"], ["i", "i+1"]]}], "break": "false"},
+                                        {"constrain": "!(i<count)", "path": [], "break": "true"}
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "loop",
+                                "content": {
+                                    "variables":{"i": "integer"},
+                                    "initialize":{"i": "0"},
+                                    "loop_body":[
+                                        {"constrain": "i<count", "path": [{"type": "procedure", "content": [["c", "3000/(1130-(111-b)*a)"], ["b","a"], ["a", "c"], ["i", "i+1"]]}], "break": "false"},
+                                        {"constrain": "!(i<count)", "path": [], "break": "true"}
+                                    ]
+                                }
+                            }
+                       ]
+            }
+         ]
+}
+
+

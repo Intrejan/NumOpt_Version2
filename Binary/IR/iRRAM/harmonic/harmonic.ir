@@ -1,0 +1,27 @@
+{
+"program_name": "harmonic",
+"function_name" : "evaluate",
+"variables" : { "n": "integer", "initval":"decimal"},
+"input_variables": ["n"],
+"paths": [{"constrain": "0<n&&n<10000", "path":[
+    {
+        "type": "procedure",
+        "content": [["initval", "0"]]
+    },
+    {
+        "type": "loop",
+        "content": {
+          "variables":{"i": "integer"},
+          "initialize":{"i": "1"},
+          "loop_body": [
+                            {"constrain": "i<n", "path": [{"type": "procedure", "content": [["initval", "initval+1.0/(i*i)"], ["i", "i+1"]]}], "break": "false"},
+                            {"constrain": "!(i<n)", "path": [], "break": "true"}
+                       ]
+        }
+    }
+]
+}
+],
+"return": "initval"
+}
+

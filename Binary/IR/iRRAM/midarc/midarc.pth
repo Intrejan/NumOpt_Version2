@@ -1,0 +1,36 @@
+{
+    "return": "__return__",
+    "variables": {
+        "z1image": "decimal",
+        "__return__": "decimal",
+        "z1real": "decimal",
+        "z2image": "decimal",
+        "z2real": "decimal"
+    },
+    "function_name": "midarc_real",
+    "program_name": "midarc",
+    "paths": [
+        {
+            "path": [
+                {
+                    "type": "procedure",
+                    "content": [
+                        [
+                            "__return__",
+                            "((z1real+z2real)/sqrt((((z1real+z2real)*(z1real+z2real))+((z1image+z2image)*(z1image+z2image)))))"
+                        ]
+                    ]
+                }
+            ],
+            "constrain": "true",
+            "continue": "false",
+            "break": "false"
+        }
+    ],
+    "input_variables": [
+        "z1image",
+        "z1real",
+        "z2image",
+        "z2real"
+    ]
+}

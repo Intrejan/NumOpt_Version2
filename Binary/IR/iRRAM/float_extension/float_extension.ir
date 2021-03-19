@@ -1,0 +1,69 @@
+{
+    "input_variables": [
+        "n"
+    ],
+    "variables": {
+        "res": "decimal",
+        "n": "integer"
+    },
+    "function_name": "evaluate",
+    "return": "res",
+    "program_name": "float_extension",
+    "paths": [
+        {
+            "continue": "false",
+            "constrain": "true",
+            "path": [
+                {
+                    "type": "procedure",
+                    "content": [
+                        [
+                            "res",
+                            "0"
+                        ]
+                    ]
+                },
+                {
+                    "type": "loop",
+                    "content": {
+                        "initialize": {
+                            "i": "1"
+                        },
+                        "variables": {
+                            "i": "integer"
+                        },
+                        "loop_body": [
+                            {
+                                "continue": "false",
+                                "constrain": "!(i<n)",
+                                "path": [],
+                                "break": "true"
+                            },
+                            {
+                                "continue": "false",
+                                "constrain": "i<n",
+                                "path": [
+                                    {
+                                        "type": "procedure",
+                                        "content": [
+                                            [
+                                                "res",
+                                                "res+(1.0/sqrt(i))"
+                                            ],
+                                            [
+                                                "i",
+                                                "i+1"
+                                            ]
+                                        ]
+                                    }
+                                ],
+                                "break": "false"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "break": "false"
+        }
+    ]
+}

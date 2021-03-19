@@ -1,0 +1,94 @@
+Negative : -A -> (-1)*A;
+
+Minus1 : A-B -> A+(-B);
+Minus2 : A+B -> A-(-B);
+Minus3 : A-B -> ((A-B)*(A+B))/(A+B);
+
+
+Divide : A/B -> A*(1/B);
+
+LogDivide : log(A/B) -> log(A) - log(B);
+LogMinus : log(A)-log(B) -> log(A/B);
+LogDivideReverse: log(A/B) -> -log(B/A);
+
+CommutationPlus : A+B -> B+(A);
+CommutationMultiply : A*B -> B*A;
+
+AssociationPlus : A+B+C -> A+(B+C);
+AssociationMultiply : A*B*C -> A*(B*C);
+
+Distribution1 : A*(B+C) -> A*B+A*C;
+
+Distribution2 : (A+B)*C -> A*C+B*C;
+
+Distribution3 : (A+B)/C -> (A)/(C)+(B)/(C);
+
+CommDenominator : A/B+C/D -> (A*D+B*C)/(B*D);
+CommDenominator1 : A/B+C -> (A+B*C)/B;
+CommDenominator2 : A/B-C -> (A-B*C)/B;
+
+FracReduction : (A*N)/(B*N) -> A/(B);
+FracPartial : A/(A-B) -> 1+B/(A-B);
+
+NumeratorForm : (A+B)/(C+D) -> (A+B)*(A-B)/((C+D)*(A-B));
+NumeratorFrom1 : (A+B)/C -> (A*A-B*B)/(C*(A-B));
+NumeratorFrom2 : (A-B)/C -> (A*A-B*B)/(C*(A+B));
+NumeratorFrom3 : A-B -> (A*A-B*B)/(A+B);
+
+DenominatorForm : (A+B)/(C+D) -> (A+B)*(C-D)/((C+D)*(C-D));
+
+Tan : tan(x) -> sin(x)/cos(x);
+
+Sec : sec(x) -> 1/cos(x);
+
+Csc : csc(x) -> 1/sin(x);
+
+Cot : cot(x) -> cos(x)/sin(x);
+
+SinPlus : sin(A+B) -> sin(A)*cos(B)+cos(A)*sin(B);
+SinMinus : sin(A-B) -> sin(A)*cos(B)-cos(A)*sin(B);
+CosPlus : cos(A+B) -> (cos(A)*cos(B)-sin(A)*sin(B));
+CosMinus : cos(A-B) -> cos(A)*cos(B)+sin(A)*sin(B);
+TanPlus : tan(A+B) -> (tan(A)+tan(B))/(1-tan(A)*tan(B));
+TanMinus : tan(A-B) -> (tan(A)-tan(B))/(1+tan(A)*tan(B));
+
+SinCos : sin(A)*cos(B) -> (sin(A+B)+sin(A-B))/2;
+CosSin : cos(A)*sin(B) -> (sin(A+B)-sin(A-B))/2;
+CosCos : cos(A)*cos(B) -> (cos(A+B)+cos(A-B))/2;
+SinSin : sin(A)*sin(B) -> (cos(A-B)-cos(A+B))/2;
+
+SinCosR : sin(A)+sin(B) -> 2*sin((A+B)/2)*cos((A-B)/2);
+CosSinR : sin(A)-sin(B) -> 2*cos((A+B)/2)*sin((A-B)/2);
+CosCosR : cos(A)+cos(B) -> 2*cos((A+B)/2)*cos((A-B)/2);
+SinSinR : cos(A)-cos(B) -> -2*sin((A+B)/2)*sin((A-B)/2);
+AtanMinus: atan(A)-atan(B) -> atan((A-B)/(1+A*B));
+
+ExpReduction : (exp(2*A)-1)/(exp(A)-1) -> 1+exp(A);
+
+TaylorExp: exp(x) -> (1+x+x**2/2+x**3/6+x**4/24);
+TaylorLog: log(1+x) -> (x-x**2/2+x**3/3-x**4/4);
+
+TaylorLn: sum(k, 0, n, -x^k/k) -> ln(1-x) @ abs(x) < 1;
+
+TaylorLnPlusReverse : log(x+1) -> (x - (x)^2/2 + (x)^3/3 - (x)^4/4+(x)^5/5);
+TaylorLnMinusReverse : log(-x+1) -> (-x - x^2/2 - x^3/3 - x^4/4-x^5/5);
+TaylorLnDivide : log((x+1)/(-x+1)) -> 2*x*(1+1/x^2+1/5*x^4);
+
+TaylorSin: sin(x) -> (x-x**3/6+x**5/120-x**7/5040);
+TaylorCos: cos(x) -> (1-x**2/2+x**4/24-x**6/720);
+TaylorTan: tan(x) -> (x+x*3/3+x**5*2/15+x**7*17/315);
+
+PolarRepresentation: A+B*I -> sqrt(A**2+B**2)*e**(atan(B/A)*I);
+
+ComplexSum1: (a1+a2)/sqrt((a1+a2)*(a1+a2)+(b1+b2)*(b1+b2)) -> cos(get_arc((sqrt(a1*a1+b1*b1)+sqrt(a2*a2+b2*b2)*cos(get_arc(a2,b2)-get_arc(a1,b1))),sqrt(a2*a2+b2*b2)*sin(get_arc(a2,b2)-get_arc(a1,b1)))+get_arc(a1,b1));
+ComplexSum2: (a1+a2)/sqrt((a1+a2)*(a1+a2)+(b1+b2)*(b1+b2)) -> cos((get_arc(a1,b1)+get_arc(a2,b2))/2);
+
+StirlingGamma: (X-0.5)*ln(X)-X+ln(2*pi)/2+sum(k, 1, n, bnl(2*k)/(2*k*(2*k-1)*X^(2*k-1))) -> ln(gamma(X));
+
+GammaTrans: gamma(X) -> X*gamma(X-1);
+
+Gamma_0: gamma(X) -> 1.0/X-euler_gamma @ abs(X) < eps;
+
+Gamma_1: gamma(X) -> X*(euler_gamma-1.0)/((2.0-euler_gamma)*(X+1.0)) @ abs(X+1) < eps;
+
+Gamma_2: gamma(X) -> (8.0-4.0*euler_gamma+3.0*X-2.0*euler_gamma*X)/(4.0*X+8.0) @ abs(X+2) < eps;
